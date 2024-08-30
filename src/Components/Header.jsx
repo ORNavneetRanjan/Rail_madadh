@@ -1,5 +1,6 @@
 import React from "react";
 import { LuPhoneCall } from "react-icons/lu";
+import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 function Header() {
   return (
@@ -14,8 +15,10 @@ function Header() {
         </div>
 
         <div className="flex flex-col text-center text-sm text-gray-600 ">
-          <h1 className="text-4xl font-bold text-pink-900">RailMadad</h1>
-          For Inquiry, Assistance & Grievance Redressal
+          <Link to={"/"}>
+            <h1 className="text-4xl font-bold text-pink-900">RailMadad</h1>
+            For Inquiry, Assistance & Grievance Redressal
+          </Link>
         </div>
       </span>
 
@@ -27,11 +30,8 @@ function Header() {
           </div>
           <span className=" text-xl ">for Security/Medical Assistance</span>
         </div>
-        <Link
-          to={"/login"}
-          className="bg-blue-100 text-blue-700 py-1 px-3 rounded text-2xl"
-        >
-          Log In
+        <Link to={"/Profile"} className=" text-pink-900 py-1 px-3 ">
+          <CgProfile className="text-5xl" />
         </Link>
 
         <select className="border rounded px-2 py-1">
