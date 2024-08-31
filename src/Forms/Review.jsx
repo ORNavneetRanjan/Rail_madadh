@@ -15,11 +15,8 @@ function Review() {
   };
 
   return (
-    <div className=" bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white p-8 rounded-md shadow-lg"
-      >
+    <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-lg">
+      <form onSubmit={handleSubmit} className="w-full max-w-lg p-8 rounded-md ">
         <h2 className="text-2xl font-bold text-maroon-600 mb-6">
           Suggestions Detail
         </h2>
@@ -74,7 +71,7 @@ function Review() {
           </button>
           <button
             type="submit"
-            className="bg-maroon-600 text-white font-bold py-2 px-4 rounded-md hover:bg-maroon-700"
+            className="bg-pink-900 text-white font-bold py-2 px-4 rounded-md hover:bg-maroon-700"
           >
             Submit
           </button>

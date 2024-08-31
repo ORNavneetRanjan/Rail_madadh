@@ -10,6 +10,7 @@ import Profile from "./user/Profile";
 import UserRoute from "./Routes/UserRoute";
 import AuthRoute from "./Routes/AuthRoute";
 import Alert from "./Components/Alert";
+import Admin from "./Admin/Admin";
 
 export default function App() {
   return (
@@ -42,6 +43,14 @@ export default function App() {
                 element={
                   <UserRoute>
                     <Profile />
+                  </UserRoute>
+                }
+              />
+              <Route
+                path="/admin"
+                element={
+                  <UserRoute>
+                    <Admin />
                   </UserRoute>
                 }
               />

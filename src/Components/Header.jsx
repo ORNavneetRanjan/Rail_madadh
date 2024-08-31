@@ -26,7 +26,9 @@ function Header() {
         <div className="flex items-center space-x-1 gap-5">
           <div className="animate-pulse  bg-red-800 text-white p-2 rounded shadow-lg flex items-center justify-center">
             <LuPhoneCall className="text-3xl mt-1" />
-            <span className="text-4xl ">139</span>
+            <Link to={"tel:+139"} className="text-4xl ">
+              139
+            </Link>
           </div>
           <span className=" text-xl ">for Security/Medical Assistance</span>
         </div>
@@ -38,11 +40,13 @@ function Header() {
           <option>English</option>
           <option>Hindi</option>
         </select>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXnZfrsoMV0WBHUnjisKhOL1vnbmWcC25euA&s"
-          alt="Accessibility Icon"
-          className="h-10"
-        />
+        <button>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXnZfrsoMV0WBHUnjisKhOL1vnbmWcC25euA&s"
+            alt="Accessibility Icon"
+            className="h-10"
+          />
+        </button>
       </div>
     </div>
   );

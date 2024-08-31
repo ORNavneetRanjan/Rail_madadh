@@ -10,11 +10,8 @@ function Track() {
   };
 
   return (
-    <div className=" bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white p-8 rounded-md shadow-lg"
-      >
+    <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-lg">
+      <form onSubmit={handleSubmit} className="max-w-md  p-8 rounded-md ">
         <h2 className="text-lg font-semibold text-maroon-600 mb-6">
           Be with us for live tracking.
         </h2>
@@ -39,7 +36,7 @@ function Track() {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-maroon-600 text-white font-bold py-2 px-8 rounded-md hover:bg-maroon-700"
+            className="bg-pink-900 w-full text-white py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
           >
             Submit
           </button>

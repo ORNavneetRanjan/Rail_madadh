@@ -25,8 +25,10 @@ function ComplaintForm({
   }, [user]);
 
   return (
-    <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-lg">
-      <h2 className="text-2xl font-bold mb-4">Complaint Form</h2>
+    <div className="bg-white bg-opacity-90 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-lg mx-auto">
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
+        Complaint Form
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -148,7 +150,7 @@ function ComplaintForm({
           Submit
         </button>
         {!isAble && (
-          <Link to={"/login"} className="text-pink-900">
+          <Link to={"/login"} className="block text-center text-pink-900 mt-2">
             Login to submit
           </Link>
         )}
