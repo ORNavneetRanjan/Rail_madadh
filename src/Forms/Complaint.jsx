@@ -4,7 +4,7 @@ import { withProblem, withUser } from "../withProvider";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function ComplaintForm({ user, setProblemsList }) {
+function ComplaintForm({ user, setProblemsList, setAlert }) {
   const { t } = useTranslation(); // Initialize the hook
   const [inTrain, setInTrain] = useState(false);
   const [isAble, setAble] = useState(false);
@@ -89,6 +89,7 @@ function ComplaintForm({ user, setProblemsList }) {
     } catch (error) {
       console.error("Error handling form submission:", error);
     }
+    setAlert({ type });
   };
 
   return (

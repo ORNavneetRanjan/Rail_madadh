@@ -42,7 +42,7 @@ function Problems({
       .catch();
   }
   return (
-    <div className="p-4 bg-gray-100 rounded-md shadow-md">
+    <div className="p-4 bg-gray-100 rounded-md shadow-md w-full">
       <h1 className="text-2xl font-semibold mb-2">{title}</h1>
       <p className="text-lg text-gray-600 mb-2">{discription}</p>
       <span className="flex items-center gap-2">

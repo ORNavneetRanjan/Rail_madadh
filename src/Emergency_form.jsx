@@ -63,6 +63,8 @@ function Emergency_form({ setProblemsList }) {
         {
           title: "emergency",
           description: formData.description,
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDQyZWZmMzg2ODg1NzE5ZTM1MThkYSIsImlhdCI6MTcyNTE4MTc4MCwiZXhwIjoxNzI1MjE3NzgwfQ.a-E0TFscJqDgmQLykSLg-Dzd_jry3NRoFFcrV5HUXv8",
         }
       );
 

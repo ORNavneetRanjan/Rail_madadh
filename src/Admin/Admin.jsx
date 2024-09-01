@@ -29,13 +29,13 @@ function Admin() {
   let general = [];
   for (const problem of allProblems) {
     console.log(problem);
-    if (problem.title == "Overcrowded") {
+    if (problem.title == "overcrowded \n") {
       overCrowded.push(problem);
     } else if (problem.title == "toilet_cleanliness") {
       toilet_cleaniness.push(problem);
-    } else if (problem.title == "coach_cleanliness") {
+    } else if (problem.title == "coach_cleanliness \n") {
       coach_cleaniness.push(problem);
-    } else if (problem.title == "window_damaged") {
+    } else if (problem.title == "window_damaged \n") {
       window_damaged.push(problem);
     } else if (problem.title == "emergency") {
       emergency.push(problem);
