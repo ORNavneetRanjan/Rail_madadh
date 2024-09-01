@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import { withFormik } from "formik";
 import { withUser } from "../withProvider";
 import { Link } from "react-router-dom";
@@ -13,6 +14,7 @@ function ComplaintForm({
   setFieldValue,
   user,
 }) {
+  const { t } = useTranslation(); // Initialize the hook
   const [inTrain, setInTrain] = useState(false);
   const [isAble, setAble] = useState(false);
   const [buttonColor, setColor] = useState("bg-gray-400");
@@ -27,13 +29,13 @@ function ComplaintForm({
   return (
     <div className="bg-white bg-opacity-90 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-lg mx-auto">
       <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
-        Complaint Form
+        {t("complaintFormTitle")}
       </h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Are you inside the train?
+            {t("areYouInsideTrain")}
           </label>
           <div className="flex items-center mt-1">
             <input
@@ -45,7 +47,7 @@ function ComplaintForm({
               className="mr-2"
             />
             <label htmlFor="inTrain" className="text-sm text-gray-700">
-              Yes
+              {t("yes")}
             </label>
           </div>
         </div>
@@ -53,7 +55,7 @@ function ComplaintForm({
         {inTrain && (
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
-              PNR Number:
+              {t("pnrNumber")}
             </label>
             <input
               type="text"
@@ -67,7 +69,7 @@ function ComplaintForm({
                   ? "border-red-500"
                   : "border-gray-300"
               } rounded-md p-2 focus:outline-none focus:ring focus:ring-opacity-50`}
-              placeholder="Enter PNR Number"
+              placeholder={t("pnrNumber")}
               required={inTrain}
             />
             {touched.pnrNumber && errors.pnrNumber && (
@@ -78,7 +80,7 @@ function ComplaintForm({
 
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Description:
+            {t("description")}
           </label>
           <textarea
             id="description"
@@ -91,7 +93,7 @@ function ComplaintForm({
                 ? "border-red-500"
                 : "border-gray-300"
             } rounded-md p-2 focus:outline-none focus:ring focus:ring-opacity-50`}
-            placeholder="Describe the issue"
+            placeholder={t("description")}
             rows="4"
             required
           />
@@ -102,7 +104,7 @@ function ComplaintForm({
 
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Upload Image:
+            {t("uploadImage")}
           </label>
           <input
             type="file"
@@ -116,7 +118,7 @@ function ComplaintForm({
 
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Upload Audio:
+            {t("uploadAudio")}
           </label>
           <input
             type="file"
@@ -130,7 +132,7 @@ function ComplaintForm({
 
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Upload Video:
+            {t("uploadVideo")}
           </label>
           <input
             type="file"
@@ -147,11 +149,11 @@ function ComplaintForm({
           disabled={!isAble}
           className={`w-full text-white py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 ${buttonColor}`}
         >
-          Submit
+          {t("submit")}
         </button>
         {!isAble && (
           <Link to={"/login"} className="block text-center text-pink-900 mt-2">
-            Login to submit
+            {t("loginToSubmit")}
           </Link>
         )}
       </form>

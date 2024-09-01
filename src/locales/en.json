@@ -1,0 +1,12 @@
+{
+  "complaintFormTitle": "Complaint Form",
+  "description": "Description",
+  "submit": "Submit",
+  "areYouInsideTrain": "Are you inside the train?",
+  "yes": "Yes",
+  "pnrNumber": "PNR Number",
+  "uploadImage": "Upload Image",
+  "uploadAudio": "Upload Audio",
+  "uploadVideo": "Upload Video",
+  "loginToSubmit": "Login to submit"
+}

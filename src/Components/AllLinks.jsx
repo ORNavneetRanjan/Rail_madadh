@@ -4,7 +4,7 @@ function AllLinks() {
   return (
     <>
       <div className="flex flex-col h-full w-1/3">
-        <span className="flex justify-between w-full">
+        <span className="flex  w-full gap-3">
           <Card
             link={
               "https://railmadad.indianrailways.gov.in/madad/final/images/booking-icon-1.png"

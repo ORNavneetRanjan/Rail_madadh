@@ -4,9 +4,10 @@ import { TbReport } from "react-icons/tb";
 import { CiCircleList } from "react-icons/ci";
 import { MdRateReview } from "react-icons/md";
 import Complaint from "./Forms/Complaint";
-import Track from "./Forms/Track";
+import Track from "./Track";
 import Review from "./Forms/Review";
 import AllLinks from "./Components/AllLinks";
+import UserRoute from "./Routes/UserRoute";
 
 function Home() {
   const [currentPage, setCurrentPage] = useState("complain");
@@ -97,7 +98,11 @@ function Home() {
 
           <div className="grow">
             {currentPage === "complain" && <Complaint />}
-            {currentPage === "track" && <Track />}
+            {currentPage === "track" && (
+              <UserRoute>
+                <Track />
+              </UserRoute>
+            )}
             {currentPage === "suggestion" && <Review />}
           </div>
         </span>

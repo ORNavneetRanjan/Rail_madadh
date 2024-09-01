@@ -1,6 +1,7 @@
 import React from "react";
 import { LuPhoneCall } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
+import { TbUrgent } from "react-icons/tb";
 import { Link } from "react-router-dom";
 function Header() {
   return (
@@ -21,16 +22,24 @@ function Header() {
           </Link>
         </div>
       </span>
-
+      <div className="animate-pulse  bg-red-800 text-white p-3 rounded shadow-lg flex items-center justify-center">
+        <TbUrgent className="text-5xl" />
+        <Link to={"tel:+139"} className="text-4xl ">
+          Emergency
+        </Link>
+      </div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-1 gap-5">
-          <div className="animate-pulse  bg-red-800 text-white p-2 rounded shadow-lg flex items-center justify-center">
-            <LuPhoneCall className="text-3xl mt-1" />
-            <Link to={"tel:+139"} className="text-4xl ">
-              139
-            </Link>
+          <div className="  bg-red-800 text-white p-2 rounded shadow-lg flex items-center justify-center flex-col">
+            <span className="flex">
+              <LuPhoneCall className="text-3xl mt-1" />
+              <Link to={"tel:+139"} className="text-3xl ">
+                139
+              </Link>
+            </span>
+            <p>for help and support</p>
           </div>
-          <span className=" text-xl ">for Security/Medical Assistance</span>
+          <span className=" text-xl "></span>
         </div>
         <Link to={"/Profile"} className=" text-pink-900 py-1 px-3 ">
           <CgProfile className="text-5xl" />

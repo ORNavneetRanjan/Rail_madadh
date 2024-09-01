@@ -7,22 +7,11 @@ function UserProvider({ children }) {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
+  const User = localStorage.getItem("user");
   useEffect(() => {
     if (token) {
-      axios
-        .get("https://myeasykart.codeyogi.io/me", {
-          headers: {
-            Authorization: token,
-          },
-        })
-        .then((response) => {
-          setUser(response.data);
-          setLoading(false);
-        })
-        .catch(() => {
-          localStorage.removeItem("token");
-          setLoading(false);
-        });
+      setUser(User);
+      setLoading(false);
     } else {
       setLoading(false);
     }

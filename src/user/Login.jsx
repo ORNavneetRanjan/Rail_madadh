@@ -1,52 +1,82 @@
 import React, { useState } from "react";
 import { CiLock } from "react-icons/ci";
 import { GoPerson } from "react-icons/go";
-import { Form, withFormik } from "formik";
-import * as Yup from "yup";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from "../Components/Input";
 import axios from "axios";
 import { withAlert, withUser } from "../withProvider";
 
-function callLoginApi(values, bag) {
-  axios
-    .post("https://myeasykart.codeyogi.io/login", {
-      email: values.email,
-      password: values.password,
-    })
-    .then((response) => {
-      const { user, token } = response.data;
-      console.log(response);
-      console.log(bag);
-      localStorage.setItem("token", token);
-      bag.props.setAlert({ type: "success", message: "LoggedIn Successfully" });
-      bag.props.setUser(user);
-    })
-    .catch((error) => {
-      if (error.response && error.response.status === 401) {
-        bag.props.setAlert({ type: "error", message: "Invalid Credentials" });
-      }
-    });
-}
+function Login({ setAlert, setUser }) {
+  const [values, setValues] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+    general: "",
+  });
 
-const schema = Yup.object().shape({
-  email: Yup.string().email().required(),
-  password: Yup.string().min(6).max(12).required(),
-});
+  const validate = () => {
+    const errors = {};
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email address is invalid";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6 || values.password.length > 12) {
+      errors.password = "Password must be between 6 and 12 characters";
+    }
+    return errors;
+  };
 
-const initialValues = {
-  email: "",
-  password: "",
-};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: "" }); // Clear individual field errors as user types
+  };
 
-function Login({
-  handleSubmit,
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    // API call
+    axios
+      .post("https://ticket-booking-backend-30ae.onrender.com/users/login", {
+        email: values.email,
+        password: values.password,
+      })
+      .then((response) => {
+        const { user, token } = response.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        setAlert({ type: "success", message: "Logged in successfully." });
+        setUser(user);
+      })
+      .catch((error) => {
+        if (error.response) {
+          if (error.response.status === 401) {
+            setAlert({ type: "error", message: "Invalid Credentials" });
+          } else if (error.response.status === 404) {
+            setAlert({ type: "error", message: "User not found." });
+          } else {
+            setAlert({
+              type: "error",
+              message: "Something went wrong. Please try again.",
+            });
+          }
+        } else {
+          // Handling network errors or other unexpected errors
+          setAlert({
+            type: "error",
+            message: "Network error. Please check your connection.",
+          });
+        }
+      });
+  };
+
   return (
     <div className="grow bg-gray-200 flex p-10">
       <div className="bg-pink-900 grow max-w-screen-lg m-auto h-svh flex flex-col gap-10 justify-center items-center">
@@ -63,11 +93,9 @@ function Login({
           <Input
             label={<GoPerson className="h-full text-3xl text-white p-1" />}
             id="email"
-            value={values.email || ""}
+            value={values.email}
             error={errors.email}
-            touched={touched.email}
             onChange={handleChange}
-            onBlur={handleBlur}
             type="email"
             name="email"
             placeholder="EMAIL"
@@ -78,11 +106,9 @@ function Login({
           <Input
             label={<CiLock className="h-full text-3xl text-white p-1" />}
             id="password"
-            value={values.password || ""}
+            value={values.password}
             error={errors.password}
-            touched={touched.password}
             onChange={handleChange}
-            onBlur={handleBlur}
             type="password"
             name="password"
             placeholder="PASSWORD"
@@ -113,10 +139,4 @@ function Login({
   );
 }
 
-const FormikLogin = withFormik({
-  validationSchema: schema,
-  initialValues: initialValues,
-  handleSubmit: callLoginApi,
-})(Login);
-
-export default withAlert(withUser(FormikLogin));
+export default withAlert(withUser(Login));

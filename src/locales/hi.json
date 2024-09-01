@@ -1,0 +1,12 @@
+{
+  "complaintFormTitle": "शिकायत फॉर्म",
+  "description": "विवरण",
+  "submit": "जमा करें",
+  "areYouInsideTrain": "क्या आप ट्रेन के अंदर हैं?",
+  "yes": "हाँ",
+  "pnrNumber": "पीएनआर नंबर",
+  "uploadImage": "चित्र अपलोड करें",
+  "uploadAudio": "ऑडियो अपलोड करें",
+  "uploadVideo": "वीडियो अपलोड करें",
+  "loginToSubmit": "जमा करने के लिए लॉगिन करें"
+}
