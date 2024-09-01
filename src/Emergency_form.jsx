@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next"; // Import useTranslation hook
-import { withProblem, withUser } from "../withProvider";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { withProblem, withUser } from "./withProvider";
 
-function ComplaintForm({ user, setProblemsList }) {
+function Emergency_form({ setProblemsList }) {
   const { t } = useTranslation(); // Initialize the hook
   const [inTrain, setInTrain] = useState(false);
-  const [isAble, setAble] = useState(false);
-  const [buttonColor, setColor] = useState("bg-gray-400");
+  const [buttonColor, setColor] = useState("bg-pink-900 hover:bg-red-700");
 
   // State for form fields
   const [formData, setFormData] = useState({
@@ -21,13 +19,6 @@ function ComplaintForm({ user, setProblemsList }) {
 
   // State for errors
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    if (user) {
-      setAble(true);
-      setColor("bg-pink-900 hover:bg-red-700");
-    }
-  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,22 +56,13 @@ function ComplaintForm({ user, setProblemsList }) {
 
     const formPayload = new FormData();
     formPayload.append("file", formData.uploadImage);
-    const token = localStorage.getItem("token");
 
     try {
-      // Send POST request with FormData
-      const response = await axios.post(
-        "http://localhost:3030/classify-image",
-        formPayload
-      );
-      const classification = response.data.classification;
-
       const problemResponse = await axios.post(
         "https://ticket-booking-backend-30ae.onrender.com/users/addproblem",
         {
-          title: classification,
+          title: "emergency",
           description: formData.description,
-          token: token,
         }
       );
 
@@ -94,7 +76,7 @@ function ComplaintForm({ user, setProblemsList }) {
   return (
     <div className="bg-white bg-opacity-90 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-lg ">
       <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
-        {t("complaintFormTitle")}
+        {t("emergencyFormTitle")}
       </h2>
 
       <form onSubmit={handleSubmit}>
@@ -204,19 +186,13 @@ function ComplaintForm({ user, setProblemsList }) {
 
         <button
           type="submit"
-          disabled={!isAble}
           className={`w-full text-white py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 ${buttonColor}`}
         >
           {t("submit")}
         </button>
-        {!isAble && (
-          <Link to={"/login"} className="block text-center text-pink-900 mt-2">
-            {t("loginToSubmit")}
-          </Link>
-        )}
       </form>
     </div>
   );
 }
 
-export default withUser(withProblem(ComplaintForm));
+export default withUser(withProblem(Emergency_form));

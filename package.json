@@ -1,6 +1,7 @@
 {
   "name": "rail-madadh",
   "private": true,
+  "proxy": "http://localhost:3030/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

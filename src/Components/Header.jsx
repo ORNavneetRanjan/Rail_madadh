@@ -24,7 +24,7 @@ function Header() {
       </span>
       <div className="animate-pulse  bg-red-800 text-white p-3 rounded shadow-lg flex items-center justify-center">
         <TbUrgent className="text-5xl" />
-        <Link to={"tel:+139"} className="text-4xl ">
+        <Link to={"/emergency"} className="text-4xl ">
           Emergency
         </Link>
       </div>

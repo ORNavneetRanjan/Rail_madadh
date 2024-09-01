@@ -13,6 +13,10 @@ import Alert from "./Components/Alert";
 import Admin from "./Admin/Admin";
 import AlertProvider from "./provider/AlertProvider";
 import ProblemProvider from "./provider/ProblemProvider";
+import Complaint from "./Forms/Complaint";
+import Emergency from "./Admin/Emergency";
+import Emergency_form from "./Emergency_form";
+import Problems from "./Components/Problems";
 
 export default function App() {
   return (
@@ -58,7 +62,10 @@ export default function App() {
                       </UserRoute>
                     }
                   />
+                  <Route path="/complaint" element={<Complaint />} />
                   <Route path="/" element={<Home />} />
+                  <Route path="/emergency" element={<Emergency_form />} />
+                  <Route path="/problemjjjjj" element={<Problems />} />
                 </Routes>
               </div>
               <Footer />

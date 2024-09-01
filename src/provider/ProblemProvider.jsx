@@ -32,7 +32,7 @@ function ProblemProvider({ children, user, setAlert }) {
   }, [user]); // Add user as a dependency to re-fetch data when user changes
 
   return (
-    <ProblemContext.Provider value={{ ProblemsList }}>
+    <ProblemContext.Provider value={{ ProblemsList, setProblemsList }}>
       {children}
     </ProblemContext.Provider>
   );

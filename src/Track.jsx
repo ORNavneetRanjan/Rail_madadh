@@ -19,6 +19,7 @@ function Track({ ProblemsList }) {
         {ProblemsList.map((problem) => (
           <Problems
             key={problem._id}
+            pid={problem._id}
             title={problem.title}
             discription={problem.description}
             status={problem.status}
