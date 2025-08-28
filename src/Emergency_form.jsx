@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import { useTranslation } from "../node_modules/react-i18next"; // Import useTranslation hook
 import axios from "axios";
 import { withProblem, withUser } from "./withProvider";
 

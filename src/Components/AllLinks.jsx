@@ -4,7 +4,7 @@ function AllLinks() {
   return (
     <>
       <div className="flex flex-col h-full w-1/3">
-        <span className="flex  w-full gap-3">
+        <span className="flex  justify-between">
           <Card
             link={
               "https://railmadad.indianrailways.gov.in/madad/final/images/booking-icon-1.png"
@@ -21,7 +21,7 @@ function AllLinks() {
           />
           <Card
             link={
-              "https://latestgovtjobs.in/wp-content/uploads/2017/10/railway-logo-300x300.png"
+              "https://railmadad.indianrailways.gov.in/madad/final/images/booking-icon-3.png"
             }
             label={"Reservation Enquiry"}
             word={

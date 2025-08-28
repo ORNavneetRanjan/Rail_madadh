@@ -65,7 +65,7 @@ export default function App() {
                   <Route path="/complaint" element={<Complaint />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/emergency" element={<Emergency_form />} />
-                  <Route path="/problemjjjjj" element={<Problems />} />
+                  <Route path="/problem" element={<Problems />} />
                 </Routes>
               </div>
               <Footer />
