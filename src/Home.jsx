@@ -41,15 +41,18 @@ function Home() {
       {/* Video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="src\Components\lv_0_20240831142430.mp4"
+        src="/lv_0_20240831142430.mp4"
         autoPlay
         loop
         muted
       />
-      <div className="relative min-h-screen flex px-20 py-10 bg-black bg-opacity-50 justify-between gap-20">
+
+      <div className="relative min-h-screen flex flex-col lg:flex-row items-center lg:items-start justify-between px-6 sm:px-10 md:px-16 lg:px-20 py-10 bg-black bg-opacity-50 gap-10 lg:gap-20">
         <AllLinks />
-        <span className="flex w-3/4 ">
-          <div className="flex flex-col w-40">
+
+        <span className="flex flex-col lg:flex-row w-full lg:w-3/4 gap-8 lg:gap-0">
+          {/* Sidebar Buttons */}
+          <div className="flex flex-col w-full sm:w-60 lg:w-40 mb-6 lg:mb-0">
             {/* Complaint Button */}
             <div
               className={
@@ -60,11 +63,14 @@ function Home() {
                 onClick={handleComplaintClick}
                 className="flex flex-col m-auto items-center"
               >
-                <CiCircleList className="text-5xl text-white " />
-                <h1 className="font-sans text-white text-xl">Complaint</h1>
+                <CiCircleList className="text-4xl sm:text-5xl text-white" />
+                <h1 className="font-sans text-white text-lg sm:text-xl">
+                  Complaint
+                </h1>
               </button>
             </div>
-            <hr />
+            <hr className="border-gray-700" />
+
             {/* Track Complaint Button */}
             <div
               className={"bg-pink-900 px-5 py-2 flex flex-wrap " + trackColor}
@@ -73,13 +79,14 @@ function Home() {
                 onClick={handleTrackClick}
                 className="flex flex-col m-auto items-center"
               >
-                <TbReport className="text-5xl text-white m-auto" />
-                <h1 className="font-sans text-white text-xl">
+                <TbReport className="text-4xl sm:text-5xl text-white m-auto" />
+                <h1 className="font-sans text-white text-lg sm:text-xl text-center">
                   Track Complaint
                 </h1>
               </button>
             </div>
-            <hr />
+            <hr className="border-gray-700" />
+
             {/* Suggestions Button */}
             <div
               className={
@@ -90,13 +97,16 @@ function Home() {
                 onClick={handleSuggestionClick}
                 className="flex flex-col m-auto items-center"
               >
-                <MdRateReview className="text-5xl text-white " />
-                <h1 className="font-sans text-white text-xl">Suggestions</h1>
+                <MdRateReview className="text-4xl sm:text-5xl text-white" />
+                <h1 className="font-sans text-white text-lg sm:text-xl">
+                  Suggestions
+                </h1>
               </button>
             </div>
           </div>
 
-          <div className="grow">
+          {/* Main Content Area */}
+          <div className="grow w-full">
             {currentPage === "complain" && <Complaint />}
             {currentPage === "track" && (
               <UserRoute>

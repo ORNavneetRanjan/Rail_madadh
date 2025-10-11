@@ -27,25 +27,26 @@ function Alert({ alert, setAlert, removeAlert }) {
   if (!alert) {
     return <></>;
   }
+
   console.log(alert);
   const { message, type } = alert;
   const { color, Icon } = themeMap[type];
 
   return (
     <>
-      <div className="w-full p-10 bg-gray-200">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-6 bg-gray-200">
         <div
           className={
-            "text-xl flex justify-between max-w-screen-lg m-auto px-4 py-2 rounded-md shadow-lg " +
+            "flex flex-col sm:flex-row justify-between items-center text-base sm:text-lg md:text-xl max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-screen-lg m-auto px-4 py-3 rounded-md shadow-lg " +
             color
           }
         >
-          <span className="flex items-center gap-4">
-            <Icon className="text-xl" />
-            <p>{message}</p>
+          <span className="flex items-center gap-3 sm:gap-4 text-center sm:text-left mb-3 sm:mb-0">
+            <Icon className="text-lg sm:text-xl" />
+            <p className="break-words">{message}</p>
           </span>
           <button
-            className="text-gray-400 border-0"
+            className="text-gray-800 hover:text-gray-700 font-semibold text-sm sm:text-base border-0 transition"
             onClick={() => setAlert(undefined)}
           >
             Dismiss

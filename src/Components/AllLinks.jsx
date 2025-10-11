@@ -1,10 +1,12 @@
 import React from "react";
 import Card from "./Card";
+
 function AllLinks() {
   return (
     <>
-      <div className="flex flex-col h-full w-1/3">
-        <span className="flex  justify-between">
+      <div className="flex flex-col w-full lg:w-1/3 h-auto lg:h-full gap-6">
+        {/* First Row */}
+        <span className="flex flex-wrap justify-center lg:justify-between gap-4 sm:gap-6">
           <Card
             link={
               "https://railmadad.indianrailways.gov.in/madad/final/images/booking-icon-1.png"
@@ -36,7 +38,9 @@ function AllLinks() {
             word={"https://rr.irctc.co.in/home#/home"}
           />
         </span>
-        <span className="flex justify-between">
+
+        {/* Second Row */}
+        <span className="flex flex-wrap justify-center lg:justify-between gap-4 sm:gap-6">
           <Card
             link={
               "https://railmadad.indianrailways.gov.in/madad/final/images/booking-icon-5.png"
@@ -44,7 +48,6 @@ function AllLinks() {
             label={"Indian Railways"}
             word={"https://indianrailways.gov.in/"}
           />
-
           <Card
             link={
               "https://railmadad.indianrailways.gov.in/madad/final/images/booking-icon-2.png"
